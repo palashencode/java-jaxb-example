@@ -1,6 +1,6 @@
 
 
-**Notes:** - JaxB examples and demos.
+**Notes:** - JAXB examples and demos.
 ---
 - This project contains examples of using JAXB, along with sample xmls and xsds.
 - JAXB allows easy conversion from/to xsd to java classes, and also validation.
