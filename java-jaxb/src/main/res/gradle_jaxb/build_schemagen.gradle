@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'com.intershop.gradle.jaxb' version '2.0.0'
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+jaxb.schemaGen {
+    example {
+        javaFiles = fileTree(dir: 'src/main/java', include: 'src/main/java/com/java/domain_annotated/*.java')
+        namespaceconfigs = ['http://www.example.com/java-jaxb': 'purchaseOrder.xsd']
+    }
+}
+
+sourceSets.main {
+    resources {
+        srcDirs = ['build/generated/jaxb/schema/example']
+        includes = ['*.xsd']
+    }
+}
+
+tasks.withType(JavaCompile) {
+    dependsOn 'jaxb'
+}
